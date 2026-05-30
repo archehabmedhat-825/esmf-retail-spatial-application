@@ -522,6 +522,40 @@ def _apply_professional_desktop_style() -> None:
             color: #0f172a !important;
         }
 
+
+        /* FINAL FIX: sidebar number-input fields are dark, so values and +/- icons must be white. */
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] div[data-baseweb="input"],
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] div[data-baseweb="base-input"],
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] input {
+            background-color: #020617 !important;
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            caret-color: #ffffff !important;
+            opacity: 1 !important;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] input::placeholder {
+            color: #cbd5e1 !important;
+            -webkit-text-fill-color: #cbd5e1 !important;
+            opacity: 1 !important;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] button,
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] button *,
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] svg {
+            background-color: #020617 !important;
+            color: #ffffff !important;
+            fill: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            opacity: 1 !important;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] input:disabled {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            opacity: 1 !important;
+        }
+
         </style>
         """,
         unsafe_allow_html=True,
