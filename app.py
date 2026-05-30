@@ -556,6 +556,28 @@ def _apply_professional_desktop_style() -> None:
             opacity: 1 !important;
         }
 
+
+
+        /* FINAL FIX: main canvas text on light background must be black. */
+        [data-testid="stAppViewContainer"] .main .block-container h1,
+        [data-testid="stAppViewContainer"] .main .block-container h2,
+        [data-testid="stAppViewContainer"] .main .block-container h3,
+        [data-testid="stAppViewContainer"] .main .block-container h4,
+        [data-testid="stAppViewContainer"] .main .block-container h5,
+        [data-testid="stAppViewContainer"] .main .block-container h6,
+        [data-testid="stAppViewContainer"] .main .block-container p,
+        [data-testid="stAppViewContainer"] .main .block-container label,
+        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stMarkdownContainer"] *,
+        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stExpander"] summary,
+        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stExpander"] summary *,
+        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stCaptionContainer"] *,
+        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stMetricValue"],
+        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stMetricLabel"] * {
+            color: #0f172a !important;
+            -webkit-text-fill-color: #0f172a !important;
+            opacity: 1 !important;
+        }
+
         </style>
         """,
         unsafe_allow_html=True,
