@@ -557,25 +557,64 @@ def _apply_professional_desktop_style() -> None:
         }
 
 
-
-        /* FINAL FIX: main canvas text on light background must be black. */
-        [data-testid="stAppViewContainer"] .main .block-container h1,
-        [data-testid="stAppViewContainer"] .main .block-container h2,
-        [data-testid="stAppViewContainer"] .main .block-container h3,
-        [data-testid="stAppViewContainer"] .main .block-container h4,
-        [data-testid="stAppViewContainer"] .main .block-container h5,
-        [data-testid="stAppViewContainer"] .main .block-container h6,
-        [data-testid="stAppViewContainer"] .main .block-container p,
-        [data-testid="stAppViewContainer"] .main .block-container label,
-        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stMarkdownContainer"] *,
-        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stExpander"] summary,
-        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stExpander"] summary *,
-        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stCaptionContainer"] *,
-        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stMetricValue"],
-        [data-testid="stAppViewContainer"] .main .block-container [data-testid="stMetricLabel"] * {
+        /* FINAL EXACT FIX: requested main-canvas texts must be black on light background. */
+        section.main h1,
+        section.main h2,
+        section.main h3,
+        section.main h4,
+        section.main p,
+        section.main label,
+        section.main span:not([data-testid="stIconMaterial"]),
+        section.main div[data-testid="stMarkdownContainer"],
+        section.main div[data-testid="stMarkdownContainer"] *,
+        section.main div[data-testid="stCaptionContainer"],
+        section.main div[data-testid="stCaptionContainer"] *,
+        section.main div[data-testid="stExpander"] summary,
+        section.main div[data-testid="stExpander"] summary *,
+        section.main div[data-testid="stExpander"] div[role="button"],
+        section.main div[data-testid="stExpander"] div[role="button"] *,
+        div[data-testid="stAppViewContainer"] h1,
+        div[data-testid="stAppViewContainer"] h2,
+        div[data-testid="stAppViewContainer"] h3,
+        div[data-testid="stAppViewContainer"] h4,
+        div[data-testid="stAppViewContainer"] p,
+        div[data-testid="stAppViewContainer"] div[data-testid="stMarkdownContainer"] *,
+        div[data-testid="stAppViewContainer"] div[data-testid="stCaptionContainer"] * {
             color: #0f172a !important;
             -webkit-text-fill-color: #0f172a !important;
             opacity: 1 !important;
+        }
+
+        /* Preserve sidebar contrast after the main text override. */
+        [data-testid="stSidebar"],
+        [data-testid="stSidebar"] *,
+        [data-testid="stSidebar"] label,
+        [data-testid="stSidebar"] p,
+        [data-testid="stSidebar"] span,
+        [data-testid="stSidebar"] div[data-testid="stMarkdownContainer"] *,
+        [data-testid="stSidebar"] div[data-testid="stCaptionContainer"] * {
+            color: #f8fafc !important;
+            -webkit-text-fill-color: #f8fafc !important;
+        }
+
+        /* Preserve sidebar dark number fields as white text. */
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] input,
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] input:disabled,
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] button,
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] button *,
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] svg {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            fill: #ffffff !important;
+            opacity: 1 !important;
+        }
+
+        /* Preserve white/dropdown control readability on the sidebar. */
+        [data-testid="stSidebar"] div[data-baseweb="select"] > div,
+        [data-testid="stSidebar"] div[data-baseweb="select"] span,
+        [data-testid="stSidebar"] div[data-baseweb="select"] input {
+            color: #0f172a !important;
+            -webkit-text-fill-color: #0f172a !important;
         }
 
         </style>
@@ -5613,7 +5652,7 @@ def _run_minimum_footprint_page():
     col1, col2 = st.columns([0.95, 1.05], gap="large")
 
     with col2:
-        st.subheader("Technology Families")
+        st.markdown('<h2 style="color:#0f172a !important;-webkit-text-fill-color:#0f172a !important;">Technology Families</h2>', unsafe_allow_html=True)
         st.header("Interactive Device Controls")
         st.caption("These device counts and dimensions are used as spatial demand to find the smallest feasible store footprint.")
 
@@ -5822,8 +5861,8 @@ if _app_page == "Device Adjustment":
     _run_manual_t_move_page()
     st.stop()
 
-st.title("Retail Store Layout Generator")
-st.caption("Evidence-based retail spatial planning workspace for layout generation, footprint calculation, and manual interactive-device adjustment.")
+st.markdown('<h1 style="color:#0f172a !important;-webkit-text-fill-color:#0f172a !important;">Retail Store Layout Generator</h1>', unsafe_allow_html=True)
+st.markdown('<p style="color:#0f172a !important;-webkit-text-fill-color:#0f172a !important;">Evidence-based retail spatial planning workspace for layout generation, footprint calculation, and manual interactive-device adjustment.</p>', unsafe_allow_html=True)
 with st.expander("ℹ️ Display classification notes", expanded=False):
     st.caption("Display islands are classified by store location into D1–D12 and drawn as light solid closed boundaries on separate layers. Frontage zone title is hidden; D3, D4, D11, and D12 remain labeled for debugging. D12 is rebuilt per opening mode as the corner frontage island between the wall and the nearest D4, falling back to D3 when needed.")
     st.caption("Center-right D5/D6 now mirror the validated left-side strip width directly from the right wall; strip validation is rounded to prevent equal-width loss from floating-point precision.")
@@ -5917,7 +5956,7 @@ intensity_map = {"Low": "low", "Medium": "medium", "High": "high"}
 col1, col2 = st.columns([1.25, 0.75])
 
 with col2:
-    st.subheader("Technology Families")
+    st.markdown('<h2 style="color:#0f172a !important;-webkit-text-fill-color:#0f172a !important;">Technology Families</h2>', unsafe_allow_html=True)
     st.header("Interactive Device Controls")
     _auto_fill_apply = st.session_state.pop("_auto_fill_t_apply", None)
     if isinstance(_auto_fill_apply, dict):
@@ -6141,7 +6180,7 @@ with col2:
 
 
 with col1:
-    st.subheader("Layout Preview")
+    st.markdown('<h2 style="color:#0f172a !important;-webkit-text-fill-color:#0f172a !important;">Layout Preview</h2>', unsafe_allow_html=True)
     if shell_validation["is_valid"]:
         shell = generate_store_shell(normalized_inputs, params)
         zoning = build_zoning(shell, fitting_side=fitting_side_ui.lower(), program_intent=intent_map[program_intent_ui])
