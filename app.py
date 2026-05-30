@@ -457,6 +457,71 @@ def _apply_professional_desktop_style() -> None:
             opacity: 1 !important;
         }
 
+
+
+        /* V2E2 left-controller controls fix: sidebar inputs/selects must stay readable. */
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] > div,
+        [data-testid="stSidebar"] [data-testid="stTextInput"] > div,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] > div,
+        [data-testid="stSidebar"] [data-testid="stMultiSelect"] > div,
+        [data-testid="stSidebar"] div[data-baseweb="select"] > div,
+        [data-testid="stSidebar"] div[data-baseweb="input"],
+        [data-testid="stSidebar"] div[data-baseweb="base-input"] {
+            background: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #0f172a !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] input,
+        [data-testid="stSidebar"] [data-testid="stTextInput"] input,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] input,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] input,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] span,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] *:not(svg),
+        [data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="select"] input,
+        [data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="select"] span,
+        [data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="select"] *:not(svg),
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] *:not(svg),
+        [data-testid="stSidebar"] [data-testid="stTextInput"] *:not(svg) {
+            color: #0f172a !important;
+            -webkit-text-fill-color: #0f172a !important;
+            opacity: 1 !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] input::placeholder,
+        [data-testid="stSidebar"] [data-testid="stTextInput"] input::placeholder,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] input::placeholder {
+            color: #64748b !important;
+            -webkit-text-fill-color: #64748b !important;
+            opacity: 1 !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] button,
+        [data-testid="stSidebar"] [data-testid="stNumberInput"] button *,
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] svg,
+        [data-testid="stSidebar"] [data-testid="stMultiSelect"] svg {
+            color: #0f172a !important;
+            fill: #0f172a !important;
+            opacity: 1 !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+        [data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="select"] > div {
+            background: #ffffff !important;
+        }
+        div[data-baseweb="popover"] [role="listbox"],
+        div[data-baseweb="popover"] ul,
+        div[data-baseweb="popover"] [role="option"] {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            -webkit-text-fill-color: #0f172a !important;
+            opacity: 1 !important;
+        }
+        div[data-baseweb="popover"] [role="option"]:hover,
+        div[data-baseweb="popover"] li:hover {
+            background: #f1f5f9 !important;
+        }
+        div[data-baseweb="popover"] [aria-selected="true"] {
+            background: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+
         </style>
         """,
         unsafe_allow_html=True,
