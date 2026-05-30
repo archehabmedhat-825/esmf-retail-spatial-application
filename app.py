@@ -106,91 +106,6 @@ def _apply_professional_desktop_style() -> None:
         .stApp {
             background: #f6f7f9;
         }
-
-        /* V2E2 visibility fix for deployed Streamlit Cloud: keep main workspace text dark on light backgrounds.
-           This prevents white headings/labels on white cards while preserving the dark sidebar. */
-        [data-testid="stAppViewContainer"] {
-            background: #f6f7f9 !important;
-            color: #0f172a !important;
-        }
-        [data-testid="stMain"],
-        .main,
-        section.main {
-            background: #f6f7f9 !important;
-            color: #0f172a !important;
-        }
-        [data-testid="stMainBlockContainer"],
-        [data-testid="stVerticalBlock"],
-        [data-testid="stHorizontalBlock"] {
-            color: #0f172a !important;
-        }
-        [data-testid="stMain"] h1,
-        [data-testid="stMain"] h2,
-        [data-testid="stMain"] h3,
-        [data-testid="stMain"] h4,
-        [data-testid="stMain"] h5,
-        [data-testid="stMain"] h6,
-        [data-testid="stMain"] p,
-        [data-testid="stMain"] li,
-        [data-testid="stMain"] label,
-        [data-testid="stMain"] small,
-        [data-testid="stMain"] [data-testid="stMarkdownContainer"],
-        [data-testid="stMain"] [data-testid="stMarkdownContainer"] *,
-        .main h1, .main h2, .main h3, .main h4, .main h5, .main h6,
-        .main p, .main li, .main label, .main small,
-        .main [data-testid="stMarkdownContainer"],
-        .main [data-testid="stMarkdownContainer"] * {
-            color: #0f172a !important;
-            -webkit-text-fill-color: #0f172a !important;
-        }
-        [data-testid="stMain"] .stCaptionContainer,
-        [data-testid="stMain"] [data-testid="stCaptionContainer"],
-        .main .stCaptionContainer,
-        .main [data-testid="stCaptionContainer"] {
-            color: #475569 !important;
-            -webkit-text-fill-color: #475569 !important;
-        }
-        [data-testid="stMain"] div[data-testid="stExpander"],
-        [data-testid="stMain"] div[data-testid="stMetric"],
-        .main div[data-testid="stExpander"],
-        .main div[data-testid="stMetric"] {
-            background: #ffffff !important;
-            color: #0f172a !important;
-        }
-        [data-testid="stMain"] div[data-baseweb="input"],
-        [data-testid="stMain"] div[data-baseweb="select"] > div,
-        [data-testid="stMain"] div[data-baseweb="textarea"],
-        .main div[data-baseweb="input"],
-        .main div[data-baseweb="select"] > div,
-        .main div[data-baseweb="textarea"] {
-            background-color: #ffffff !important;
-            color: #0f172a !important;
-            -webkit-text-fill-color: #0f172a !important;
-        }
-        [data-testid="stMain"] input,
-        [data-testid="stMain"] textarea,
-        [data-testid="stMain"] div[data-baseweb="select"] span,
-        .main input,
-        .main textarea,
-        .main div[data-baseweb="select"] span {
-            color: #0f172a !important;
-            -webkit-text-fill-color: #0f172a !important;
-        }
-        [data-testid="stMain"] [disabled],
-        .main [disabled] {
-            color: #334155 !important;
-            -webkit-text-fill-color: #334155 !important;
-            opacity: 1 !important;
-        }
-        /* Preserve readable button contrast after the global text correction. */
-        [data-testid="stMain"] .stButton > button[kind="primary"],
-        [data-testid="stMain"] .stButton > button[kind="primary"] *,
-        [data-testid="stMain"] .stDownloadButton > button[kind="primary"],
-        [data-testid="stMain"] .stDownloadButton > button[kind="primary"] * {
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
-        }
-
         .block-container {
             padding-top: 1.25rem;
             padding-bottom: 2.25rem;
@@ -310,10 +225,32 @@ def _apply_professional_desktop_style() -> None:
             box-shadow: 0 1px 2px rgba(15,23,42,0.08);
             font-weight: 600;
         }
+
+        /* Keep text readable on dark buttons. */
+        .stButton > button,
+        .stButton > button p,
+        .stButton > button span,
+        .stDownloadButton > button,
+        .stDownloadButton > button p,
+        .stDownloadButton > button span {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
         .stButton > button[kind="primary"],
-        .stDownloadButton > button:hover,
-        .stButton > button:hover {
+        .stDownloadButton > button[kind="primary"] {
+            background: #0f172a !important;
+            border-color: #0f172a !important;
+            color: #ffffff !important;
+        }
+        .stButton > button:hover,
+        .stDownloadButton > button:hover {
             border-color: #334155;
+            color: #ffffff !important;
+        }
+        .stButton > button:disabled,
+        .stDownloadButton > button:disabled {
+            color: #e5e7eb !important;
+            -webkit-text-fill-color: #e5e7eb !important;
         }
 
         /* Data tables. */
